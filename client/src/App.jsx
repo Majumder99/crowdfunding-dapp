@@ -1,35 +1,52 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { ConnectWallet } from "@thirdweb-dev/react";
+import "./styles/Home.css";
 
-function App() {
-  const [count, setCount] = useState(0)
-
+export default function Home() {
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div className="container">
+      <main className="main">
+        <h1 className="title">
+          Welcome to <a href="https://thirdweb.com/">thirdweb</a>!
+        </h1>
 
-export default App
+        <p className="description">
+          Get started by configuring your desired network in{" "}
+          <code className="code">src/main.jsx</code>, then modify the{" "}
+          <code className="code">src/App.jsx</code> file!
+        </p>
+
+        <div className="connect">
+          <ConnectWallet dropdownPosition={{
+            align: 'center',
+            side: 'bottom'
+          }} />
+        </div>
+
+        <div className="grid">
+          <a href="https://portal.thirdweb.com/" className="card">
+            <h2>Portal &rarr;</h2>
+            <p>
+              Guides, references and resources that will help you build with
+              thirdweb.
+            </p>
+          </a>
+
+          <a href="https://thirdweb.com/dashboard" className="card">
+            <h2>Dashboard &rarr;</h2>
+            <p>
+              Deploy, configure and manage your smart contracts from the
+              dashboard.
+            </p>
+          </a>
+
+          <a href="https://portal.thirdweb.com/templates" className="card">
+            <h2>Templates &rarr;</h2>
+            <p>
+              Discover and clone template projects showcasing thirdweb features.
+            </p>
+          </a>
+        </div>
+      </main>
+    </div>
+  );
+}
