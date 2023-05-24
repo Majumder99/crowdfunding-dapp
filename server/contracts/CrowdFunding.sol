@@ -2,6 +2,13 @@
 pragma solidity 0.8.19;
 
 contract CrowdFunding {
+
+    address payable owner;
+
+    constructor(){
+        owner = payable(msg.sender);
+    }
+    
     struct Campaign{
         address owner;
         string title;
@@ -34,6 +41,7 @@ contract CrowdFunding {
 
     function donateToCampaign(uint256 _id) public payable{
         uint256 amount = msg.value;
+        require(owner != msg.sender, "You can't fund yourself ");
         require(amount > 0, "amount must be greater than zero");
         // Campaign storage campaign = campaigns[_id];
         // campaign.donators.push(msg.sender);
